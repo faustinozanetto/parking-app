@@ -1,13 +1,10 @@
 import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()
-export class FindUserInput {
+export class FindDomainInput {
   @Field(() => String, { nullable: true })
   uuid?: string;
 
   @Field(() => String, { nullable: true })
-  dni?: string;
-
-  @Field(() => String, { nullable: true })
-  email?: string;
+  domain?: string;
 }

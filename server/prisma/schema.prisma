@@ -14,7 +14,12 @@ model User {
   dni     String @unique
   email   String @unique
 
+  parks Park[]
+
   domains Domain[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model Domain {
@@ -23,4 +28,18 @@ model Domain {
 
   user     User?   @relation(fields: [userUuid], references: [uuid])
   userUuid String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Park {
+  uuid     String @id @default(cuid())
+  duration Int    @default(30)
+
+  user     User   @relation(fields: [userUuid], references: [uuid])
+  userUuid String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }

@@ -1,0 +1,75 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input AddDomainToUserInput {
+  domain: String
+  user: FindUserInput
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Domain {
+  createdAt: DateTime
+  domain: String
+  updatedAt: DateTime
+  uuid: String
+}
+
+type DomainResponse {
+  domain: Domain
+  errors: [ErrorResponse!]
+}
+
+type DomainsResponse {
+  domains: [Domain!]
+  errors: [ErrorResponse!]
+}
+
+type ErrorResponse {
+  field: String!
+  message: String!
+}
+
+input FindDomainInput {
+  domain: String
+  uuid: String
+}
+
+input FindUserDomainsInput {
+  user: FindUserInput
+}
+
+input FindUserInput {
+  dni: String
+  email: String
+  uuid: String
+}
+
+type Mutation {
+  addDomainToUer(input: AddDomainToUserInput!): DomainResponse!
+}
+
+type Query {
+  findDomain(input: FindDomainInput!): DomainResponse!
+  findUser(input: FindUserInput!): UserResponse!
+  findUserDomains(input: FindUserDomainsInput!): DomainsResponse!
+}
+
+type User {
+  createdAt: DateTime
+  dni: String
+  email: String
+  name: String
+  surname: String
+  updatedAt: DateTime
+  uuid: String
+}
+
+type UserResponse {
+  errors: [ErrorResponse!]
+  user: User
+}
