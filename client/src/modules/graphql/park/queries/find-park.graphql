@@ -1,0 +1,5 @@
+query findPark($input: FindParkInput!) {
+  findPark(input: $input) {
+    ...ParkResponse
+  }
+}

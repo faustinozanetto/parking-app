@@ -1,0 +1,5 @@
+mutation addDomainToUer($input: AddDomainToUserInput!) {
+  addDomainToUer(input: $input) {
+    ...DomainResponse
+  }
+}

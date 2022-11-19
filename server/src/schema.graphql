@@ -12,6 +12,11 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type DeleteObjectResponse {
+  errors: [ErrorResponse!]
+  success: Boolean
+}
+
 type Domain {
   createdAt: DateTime
   domain: String
@@ -39,6 +44,10 @@ input FindDomainInput {
   uuid: String
 }
 
+input FindParkInput {
+  uuid: String
+}
+
 input FindUserDomainsInput {
   user: FindUserInput
 }
@@ -51,12 +60,34 @@ input FindUserInput {
 
 type Mutation {
   addDomainToUer(input: AddDomainToUserInput!): DomainResponse!
+  removeDomainFromuser(input: RemoveDomainFromUserInput!): DeleteObjectResponse!
+}
+
+type Park {
+  createdAt: DateTime
+  domain: Domain
+  duration: Int
+  location: String
+  updatedAt: DateTime
+  user: User
+  uuid: String
+}
+
+type ParkResponse {
+  errors: [ErrorResponse!]
+  park: Park
 }
 
 type Query {
   findDomain(input: FindDomainInput!): DomainResponse!
+  findPark(input: FindParkInput!): ParkResponse!
   findUser(input: FindUserInput!): UserResponse!
   findUserDomains(input: FindUserDomainsInput!): DomainsResponse!
+}
+
+input RemoveDomainFromUserInput {
+  domain: FindDomainInput
+  user: FindUserInput
 }
 
 type User {

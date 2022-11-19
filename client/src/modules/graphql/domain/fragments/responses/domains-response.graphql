@@ -1,0 +1,8 @@
+fragment DomainsResponse on DomainsResponse {
+  domains {
+    ...Domain
+  }
+  errors {
+    ...ErrorResponse
+  }
+}

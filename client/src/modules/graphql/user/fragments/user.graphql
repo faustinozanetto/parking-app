@@ -1,0 +1,9 @@
+fragment User on User {
+  uuid
+  name
+  surname
+  dni
+  email
+  createdAt
+  updatedAt
+}

@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import defaultConfig from 'common/config/defaultConfig';
 import { DomainResolver } from 'modules/domain/domain.resolver';
 import { GqlConfigService } from 'modules/graphql/graphql.config.service';
+import { ParkResolver } from 'modules/park/park.resolver';
 import { PrismaService } from 'modules/prisma/prisma.service';
 import { UserResolver } from 'modules/user/user.resolver';
 
@@ -17,6 +18,6 @@ import { UserResolver } from 'modules/user/user.resolver';
       useClass: GqlConfigService,
     }),
   ],
-  providers: [PrismaService, UserResolver, DomainResolver],
+  providers: [PrismaService, UserResolver, DomainResolver, ParkResolver],
 })
 export class AppModule {}

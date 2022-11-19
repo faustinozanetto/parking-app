@@ -1,0 +1,6 @@
+fragment DeleteObjectResponse on DeleteObjectResponse {
+  success
+  errors {
+    ...ErrorResponse
+  }
+}

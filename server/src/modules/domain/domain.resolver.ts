@@ -1,9 +1,11 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Args, Mutation, Query } from '@nestjs/graphql';
+import { DeleteObjectResponse } from 'modules/common/responses/delete-object.response';
 import { PrismaService } from 'modules/prisma/prisma.service';
 import { AddDomainToUserInput } from './dto/add-domain-to-user.input';
 import { FindDomainInput } from './dto/find-domain.input';
 import { FindUserDomainsInput } from './dto/find-user-domains.input';
+import { RemoveDomainFromUserInput } from './dto/remove-domain-to-user.input';
 import { DomainResponse } from './responses/domain.response';
 import { DomainsResponse } from './responses/domains.response';
 
@@ -99,5 +101,39 @@ export class DomainResolver {
       };
     }
     return { domain };
+  }
+
+  @Mutation(() => DeleteObjectResponse)
+  async removeDomainFromuser(
+    @Args('input') input: RemoveDomainFromUserInput,
+  ): Promise<DeleteObjectResponse> {
+    const user = await this.prisma.user.update({
+      where: {
+        ...input.user,
+      },
+      data: {
+        domains: {
+          delete: {
+            ...input.domain,
+          },
+        },
+      },
+    });
+
+    if (!user) {
+      return {
+        success: false,
+        errors: [
+          {
+            field: 'input',
+            message: 'Could not find user with given input.',
+          },
+        ],
+      };
+    }
+
+    return {
+      success: true,
+    };
   }
 }

@@ -1,0 +1,5 @@
+mutation removeDomainFromuser($input: RemoveDomainFromUserInput!) {
+  removeDomainFromuser(input: $input) {
+    ...DeleteObjectResponse
+  }
+}

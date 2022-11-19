@@ -1,0 +1,5 @@
+query findDomain($input: FindDomainInput!) {
+  findDomain(input: $input) {
+    ...DomainResponse
+  }
+}

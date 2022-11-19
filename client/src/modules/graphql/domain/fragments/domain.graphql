@@ -1,0 +1,6 @@
+fragment Domain on Domain {
+  uuid
+  domain
+  createdAt
+  updatedAt
+}

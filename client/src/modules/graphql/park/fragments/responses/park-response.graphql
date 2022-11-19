@@ -1,0 +1,8 @@
+fragment ParkResponse on ParkResponse {
+  park {
+    ...Park
+  }
+  errors {
+    ...ErrorResponse
+  }
+}

@@ -29,6 +29,8 @@ model Domain {
   user     User?   @relation(fields: [userUuid], references: [uuid])
   userUuid String?
 
+  parks Park[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
@@ -36,10 +38,14 @@ model Domain {
 model Park {
   uuid     String @id @default(cuid())
   duration Int    @default(30)
+  location String
 
   user     User   @relation(fields: [userUuid], references: [uuid])
   userUuid String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  domain Domain @relation(fields: [domainUuid], references: [uuid])
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  domainUuid String
 }

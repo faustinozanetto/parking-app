@@ -1,0 +1,11 @@
+fragment Park on Park {
+  uuid
+  duration
+  location
+  domain {
+    ...Domain
+  }
+  user {
+    ...User
+  }
+}
