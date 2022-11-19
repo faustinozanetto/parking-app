@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/Feather';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -16,7 +15,8 @@ export default function App() {
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={{
-          tabBarActiveTintColor: 'purple',
+          tabBarActiveTintColor: '#0ea5e9',
+          tabBarInactiveTintColor: 'gray',
         }}
       >
         <Tab.Screen

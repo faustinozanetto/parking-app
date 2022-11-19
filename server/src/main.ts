@@ -1,8 +1,11 @@
 import 'class-validator';
-import { ValidationPipe, VersioningType } from '@nestjs/common';
-import { HttpAdapterHost, NestFactory } from '@nestjs/core';
+import { VersioningType } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import * as dotenv from 'dotenv';
 import { AppModule } from 'app.module';
+
+dotenv.config();
 
 const bootstrap = async () => {
   /*==================Initialization================*/
